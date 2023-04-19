@@ -17,7 +17,7 @@ create: function (element, config) {},
         #chartdiv {
           height:100%;
           min-height: 600px;
-          max-height:660px;
+
           width: 100%;
 
         }
@@ -148,7 +148,7 @@ element.append(visContainer)
 
       chart.legend = new am4charts.Legend();
 
-    }); 
+    });
 
 
 doneRendering()
