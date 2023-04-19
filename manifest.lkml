@@ -11,6 +11,7 @@ visualization: {
 
   "https://www.amcharts.com/lib/4/core.js",
    "https://www.amcharts.com/lib/4/charts.js",
+   "https://cdn.amcharts.com/lib/4/plugins/sunburst.js",
    "https://www.amcharts.com/lib/4/themes/animated.js"
   ]
 
