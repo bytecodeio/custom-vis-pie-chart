@@ -9,9 +9,9 @@ visualization: {
 
   dependencies: [
 
-    "https://cdn.amcharts.com/lib/5/index.js",
-    "https://cdn.amcharts.com/lib/5/xy.js",
-    "https://cdn.amcharts.com/lib/5/themes/Animated.js"
+  "https://www.amcharts.com/lib/4/core.js",
+   "https://www.amcharts.com/lib/4/charts.js",
+   "https://www.amcharts.com/lib/4/themes/animated.js"
   ]
 
 }
