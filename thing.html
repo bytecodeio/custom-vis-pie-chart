@@ -1,0 +1,830 @@
+
+<style>
+  #chartdiv {
+    min-height: 600px;
+
+
+  }
+</style>
+
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/plugins/sunburst.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+<script>
+
+
+  var queryResponse = {
+  "id": "ea389f1e8fec8c5cdea54b4b8873a60a",
+  "supports_pivot_in_db": true,
+  "null_sort_treatment": "low",
+  "from_cache": false,
+  "expired": false,
+  "ran_at": "2023-04-19T16:06:00+00:00",
+  "aggregate_table_used_info": null,
+  "runtime": "0.954",
+  "forecast_result": null,
+  "dialect_specific_metadata": {
+    "total_bytes_processed": 0,
+    "backend_cache_hit": true,
+    "bi_engine_mode": null,
+    "bi_engine_reasons": null,
+    "bigquery_job_id": "looker-onboarding:US.job_TZeuTLhgqBR9goKk4HTR0ZJ3H1tD"
+  },
+  "sql": "SELECT\n    carriers.name  AS carriers_name,\n    COUNT(*) AS flights_count\nFROM faa.flights  AS flights\nLEFT JOIN faa.carriers  AS carriers ON flights.carrier = carriers.code\nGROUP BY\n    1\nORDER BY\n    2 DESC\nLIMIT 500",
+  "sql_explain": null,
+  "fields": {
+    "measures": [
+      {
+        "align": "right",
+        "can_filter": true,
+        "category": "measure",
+        "default_filter_value": null,
+        "description": "",
+        "enumerations": null,
+        "field_group_label": null,
+        "fill_style": null,
+        "fiscal_month_offset": 0,
+        "has_allowed_values": false,
+        "hidden": false,
+        "is_filter": false,
+        "is_numeric": true,
+        "label": "Flights Count",
+        "label_from_parameter": null,
+        "label_short": "Count",
+        "map_layer": null,
+        "name": "flights.count",
+        "strict_value_format": false,
+        "requires_refresh_on_sort": false,
+        "sortable": true,
+        "suggestions": null,
+        "tags": [],
+        "type": "count",
+        "user_attribute_filter_types": [
+          "number",
+          "advanced_filter_number"
+        ],
+        "value_format": null,
+        "view": "flights",
+        "view_label": "Flights",
+        "dynamic": false,
+        "week_start_day": "monday",
+        "original_view": "flights",
+        "dimension_group": null,
+        "error": null,
+        "field_group_variant": "Count",
+        "measure": true,
+        "parameter": false,
+        "primary_key": false,
+        "project_name": "faa",
+        "scope": "flights",
+        "suggest_dimension": "flights.count",
+        "suggest_explore": "flights",
+        "suggestable": false,
+        "is_fiscal": false,
+        "is_timeframe": false,
+        "is_turtle": false,
+        "can_turtle": false,
+        "turtle_dimension": null,
+        "can_time_filter": false,
+        "time_interval": null,
+        "lookml_link": "/projects/faa/files/flights.view.lkml?line=31",
+        "permanent": null,
+        "source_file": "flights.view.lkml",
+        "source_file_path": "faa/flights.view.lkml",
+        "sql": null,
+        "sql_case": null,
+        "filters": null,
+        "times_used": 0,
+        "sorted": {
+          "sort_index": 0,
+          "desc": true,
+          "pivot_index": 0
+        }
+      }
+    ],
+    "dimensions": [
+      {
+        "align": "left",
+        "can_filter": true,
+        "category": "dimension",
+        "default_filter_value": null,
+        "description": "",
+        "enumerations": null,
+        "field_group_label": null,
+        "fill_style": null,
+        "fiscal_month_offset": 0,
+        "has_allowed_values": false,
+        "hidden": false,
+        "is_filter": false,
+        "is_numeric": false,
+        "label": "Carriers Name",
+        "label_from_parameter": null,
+        "label_short": "Name",
+        "map_layer": null,
+        "name": "carriers.name",
+        "strict_value_format": false,
+        "requires_refresh_on_sort": false,
+        "sortable": true,
+        "suggestions": null,
+        "tags": [],
+        "type": "string",
+        "user_attribute_filter_types": [
+          "string",
+          "advanced_filter_string"
+        ],
+        "value_format": null,
+        "view": "carriers",
+        "view_label": "Carriers",
+        "dynamic": false,
+        "week_start_day": "monday",
+        "original_view": "carriers",
+        "dimension_group": null,
+        "error": null,
+        "field_group_variant": "Name",
+        "measure": false,
+        "parameter": false,
+        "primary_key": false,
+        "project_name": "faa",
+        "scope": "carriers",
+        "suggest_dimension": "carriers.name",
+        "suggest_explore": "flights",
+        "suggestable": true,
+        "is_fiscal": false,
+        "is_timeframe": false,
+        "is_turtle": false,
+        "can_turtle": false,
+        "turtle_dimension": null,
+        "can_time_filter": false,
+        "time_interval": null,
+        "lookml_link": "/projects/faa/files/carriers.view.lkml?line=10",
+        "permanent": null,
+        "source_file": "carriers.view.lkml",
+        "source_file_path": "faa/carriers.view.lkml",
+        "sql": "${TABLE}.name ",
+        "sql_case": null,
+        "filters": null,
+        "times_used": 0
+      }
+    ],
+    "table_calculations": [],
+    "pivots": []
+  },
+  "fill_fields": [],
+  "has_totals": false,
+  "has_row_totals": false,
+  "applied_filters": {},
+  "applied_filter_expression": null,
+  "number_format": "1,234.56",
+  "explore": {
+    "name": "flights",
+    "label": "Flights",
+    "description": "Start here for information about flights!"
+  },
+  "timezone": "America/Los_Angeles",
+  "data": [
+    {
+      "carriers.name": {
+        "value": "Southwest Airlines"
+      },
+      "flights.count": {
+        "value": 5920750,
+        "rendered": "5,920,750",
+        "links": [
+          {
+            "label": "Show All 5,920,750",
+            "label_prefix": "Show All",
+            "label_value": "5,920,750",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Southwest+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Delta Air Lines"
+      },
+      "flights.count": {
+        "value": 4627060,
+        "rendered": "4,627,060",
+        "links": [
+          {
+            "label": "Show All 4,627,060",
+            "label_prefix": "Show All",
+            "label_value": "4,627,060",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Delta+Air+Lines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "American Airlines"
+      },
+      "flights.count": {
+        "value": 4554865,
+        "rendered": "4,554,865",
+        "links": [
+          {
+            "label": "Show All 4,554,865",
+            "label_prefix": "Show All",
+            "label_value": "4,554,865",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=American+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "United Airlines"
+      },
+      "flights.count": {
+        "value": 3781553,
+        "rendered": "3,781,553",
+        "links": [
+          {
+            "label": "Show All 3,781,553",
+            "label_prefix": "Show All",
+            "label_value": "3,781,553",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=United+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "US Airways"
+      },
+      "flights.count": {
+        "value": 3324928,
+        "rendered": "3,324,928",
+        "links": [
+          {
+            "label": "Show All 3,324,928",
+            "label_prefix": "Show All",
+            "label_value": "3,324,928",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=US+Airways&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Northwest Airlines"
+      },
+      "flights.count": {
+        "value": 3172695,
+        "rendered": "3,172,695",
+        "links": [
+          {
+            "label": "Show All 3,172,695",
+            "label_prefix": "Show All",
+            "label_value": "3,172,695",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Northwest+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "American Eagle Airlines"
+      },
+      "flights.count": {
+        "value": 2291447,
+        "rendered": "2,291,447",
+        "links": [
+          {
+            "label": "Show All 2,291,447",
+            "label_prefix": "Show All",
+            "label_value": "2,291,447",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=American+Eagle+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Continental Airlines"
+      },
+      "flights.count": {
+        "value": 2058421,
+        "rendered": "2,058,421",
+        "links": [
+          {
+            "label": "Show All 2,058,421",
+            "label_prefix": "Show All",
+            "label_value": "2,058,421",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Continental+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Sky West Airlines"
+      },
+      "flights.count": {
+        "value": 1383933,
+        "rendered": "1,383,933",
+        "links": [
+          {
+            "label": "Show All 1,383,933",
+            "label_prefix": "Show All",
+            "label_value": "1,383,933",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Sky+West+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "America West Airlines"
+      },
+      "flights.count": {
+        "value": 1242100,
+        "rendered": "1,242,100",
+        "links": [
+          {
+            "label": "Show All 1,242,100",
+            "label_prefix": "Show All",
+            "label_value": "1,242,100",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=America+West+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Continental Express Airlines"
+      },
+      "flights.count": {
+        "value": 1099556,
+        "rendered": "1,099,556",
+        "links": [
+          {
+            "label": "Show All 1,099,556",
+            "label_prefix": "Show All",
+            "label_value": "1,099,556",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Continental+Express+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Alaska Airlines"
+      },
+      "flights.count": {
+        "value": 981180,
+        "rendered": "981,180",
+        "links": [
+          {
+            "label": "Show All 981,180",
+            "label_prefix": "Show All",
+            "label_value": "981,180",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Alaska+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Atlantic Southeast Airlines"
+      },
+      "flights.count": {
+        "value": 854062,
+        "rendered": "854,062",
+        "links": [
+          {
+            "label": "Show All 854,062",
+            "label_prefix": "Show All",
+            "label_value": "854,062",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Atlantic+Southeast+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Comair (Delta Connections)"
+      },
+      "flights.count": {
+        "value": 754598,
+        "rendered": "754,598",
+        "links": [
+          {
+            "label": "Show All 754,598",
+            "label_prefix": "Show All",
+            "label_value": "754,598",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Comair+%28Delta+Connections%29&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Atlantic Coast Airlines"
+      },
+      "flights.count": {
+        "value": 692988,
+        "rendered": "692,988",
+        "links": [
+          {
+            "label": "Show All 692,988",
+            "label_prefix": "Show All",
+            "label_value": "692,988",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Atlantic+Coast+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Trans World Airlines"
+      },
+      "flights.count": {
+        "value": 555430,
+        "rendered": "555,430",
+        "links": [
+          {
+            "label": "Show All 555,430",
+            "label_prefix": "Show All",
+            "label_value": "555,430",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Trans+World+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Airtran Airways Corporation"
+      },
+      "flights.count": {
+        "value": 502572,
+        "rendered": "502,572",
+        "links": [
+          {
+            "label": "Show All 502,572",
+            "label_prefix": "Show All",
+            "label_value": "502,572",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Airtran+Airways+Corporation&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Jetblue Airways"
+      },
+      "flights.count": {
+        "value": 267969,
+        "rendered": "267,969",
+        "links": [
+          {
+            "label": "Show All 267,969",
+            "label_prefix": "Show All",
+            "label_value": "267,969",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Jetblue+Airways&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "American Trans Air, Inc.",
+        "filterable_value": "\"American Trans Air, Inc.\""
+      },
+      "flights.count": {
+        "value": 188769,
+        "rendered": "188,769",
+        "links": [
+          {
+            "label": "Show All 188,769",
+            "label_prefix": "Show All",
+            "label_value": "188,769",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=%22American+Trans+Air%2C+Inc.%22&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Hawaiian Airlines"
+      },
+      "flights.count": {
+        "value": 104091,
+        "rendered": "104,091",
+        "links": [
+          {
+            "label": "Show All 104,091",
+            "label_prefix": "Show All",
+            "label_value": "104,091",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Hawaiian+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": "Aloha Airlines"
+      },
+      "flights.count": {
+        "value": 64834,
+        "rendered": "64,834",
+        "links": [
+          {
+            "label": "Show All 64,834",
+            "label_prefix": "Show All",
+            "label_value": "64,834",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=Aloha+Airlines&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    },
+    {
+      "carriers.name": {
+        "value": null,
+        "filterable_value": "NULL"
+      },
+      "flights.count": {
+        "value": 53243,
+        "rendered": "53,243",
+        "links": [
+          {
+            "label": "Show All 53,243",
+            "label_prefix": "Show All",
+            "label_value": "53,243",
+            "url": "/explore/faa/flights?fields=flights.origin,flights.destination,flights.count&f[carriers.name]=NULL&query_timezone=America%2FLos_Angeles&limit=500",
+            "type": "measure_default"
+          }
+        ]
+      }
+    }
+  ],
+  "drill_menu_build_time": 0.068779,
+  "has_subtotals": false
+}
+
+
+
+var data = [
+  {
+    "carriers.name": "Southwest Airlines",
+    "flights.count": 5920750
+  },
+  {
+    "carriers.name": "Delta Air Lines",
+    "flights.count": 4627060
+  },
+  {
+    "carriers.name": "American Airlines",
+    "flights.count": 4554865
+  },
+  {
+    "carriers.name": "United Airlines",
+    "flights.count": 3781553
+  },
+  {
+    "carriers.name": "US Airways",
+    "flights.count": 3324928
+  },
+  {
+    "carriers.name": "Northwest Airlines",
+    "flights.count": 3172695
+  },
+  {
+    "carriers.name": "American Eagle Airlines",
+    "flights.count": 2291447
+  },
+  {
+    "carriers.name": "Continental Airlines",
+    "flights.count": 2058421
+  },
+  {
+    "carriers.name": "Sky West Airlines",
+    "flights.count": 1383933
+  },
+  {
+    "carriers.name": "America West Airlines",
+    "flights.count": 1242100
+  },
+  {
+    "carriers.name": "Continental Express Airlines",
+    "flights.count": 1099556
+  },
+  {
+    "carriers.name": "Alaska Airlines",
+    "flights.count": 981180
+  },
+  {
+    "carriers.name": "Atlantic Southeast Airlines",
+    "flights.count": 854062
+  },
+  {
+    "carriers.name": "Comair (Delta Connections)",
+    "flights.count": 754598
+  },
+  {
+    "carriers.name": "Atlantic Coast Airlines",
+    "flights.count": 692988
+  },
+  {
+    "carriers.name": "Trans World Airlines",
+    "flights.count": 555430
+  },
+  {
+    "carriers.name": "Airtran Airways Corporation",
+    "flights.count": 502572
+  },
+  {
+    "carriers.name": "Jetblue Airways",
+    "flights.count": 267969
+  },
+  {
+    "carriers.name": "American Trans Air, Inc.",
+    "flights.count": 188769
+  },
+  {
+    "carriers.name": "Hawaiian Airlines",
+    "flights.count": 104091
+  },
+  {
+    "carriers.name": "Aloha Airlines",
+    "flights.count": 64834
+  },
+  {
+    "carriers.name": null,
+    "flights.count": 53243
+  }
+]
+
+
+
+    formattedData = []
+
+
+
+    const grouping_dim = queryResponse.fields.dimensions[0].name;
+
+    const plot_measure = queryResponse.fields.measures[0].name;
+
+    console.log(grouping_dim)
+    console.log(plot_measure)
+
+
+    data.forEach(function(data) {
+      formattedData.push({
+
+        name: data[grouping_dim],
+        count: data[plot_measure],
+
+      });
+
+
+    });
+
+
+
+  // var data = [
+  // {
+  //
+  //   "name": "Southwest Airlines",
+  //   "value": 1035777
+  // },
+  // {
+  //
+  //   "name": "US Airways",
+  //   "value": 425427
+  // },
+  // {
+  //
+  //   "name": "Sky West Airlines",
+  //   "value": 517270
+  // },
+  // {
+  //
+  //   "name": "American Airlines",
+  //   "value": 673223
+  // },
+  // {
+  //   "name": "Jetblue Airways",
+  //   "value": 267969
+  // },
+  // {
+  //   "name": "United Airlines",
+  //   "value": 378155
+  // },
+  // {
+  //   "name": "Hawaiian Airlines",
+  //   "value": 104091
+  // },
+  // {
+  //   "name": "Aloha Airlines",
+  //   "value": 64834
+  // },
+  //
+  //
+  // ]
+
+  am4core.ready(function() {
+
+
+    am4core.useTheme(am4themes_animated);
+
+    var chart = am4core.create("chartdiv", am4plugins_sunburst.Sunburst);
+    chart.padding(0,0,0,0);
+    chart.radius = am4core.percent(98);
+
+
+
+
+    const objData = {};
+
+    formattedData.forEach((item) => {
+      if (!objData.hasOwnProperty(item.name)) {
+        objData[item.name] = [item];
+      } else {
+        objData[item.name] = [...objData[item.name], item];
+      }
+    });
+
+    const resultData = Object.keys(objData).map((key) => {
+      return {
+        name: key,
+        children: objData[key],
+      };
+    });
+    console.log(resultData);
+
+    chart.data = resultData;
+
+
+    console.log(chart.data)
+
+
+
+    chart.colors.step = 2;
+    chart.fontSize = 11;
+    chart.innerRadius = am4core.percent(10);
+
+    chart.dataFields.value = "count";
+    chart.dataFields.name = "name";
+    chart.dataFields.children = "children";
+
+
+    var level0SeriesTemplate = new am4plugins_sunburst.SunburstSeries();
+    level0SeriesTemplate.hiddenInLegend = false;
+    chart.seriesTemplates.setKey("0", level0SeriesTemplate)
+
+    level0SeriesTemplate.labels.template.truncate = true;
+    level0SeriesTemplate.labels.template.hideOversized = true;
+
+    level0SeriesTemplate.labels.template.adapter.add("rotation", function(rotation, target) {
+      target.maxWidth = target.dataItem.slice.radius - target.dataItem.slice.innerRadius - 10;
+      target.maxHeight = Math.abs(target.dataItem.slice.arc * (target.dataItem.slice.innerRadius + target.dataItem.slice.radius) / 2 * am4core.math.RADIANS);
+
+      return rotation;
+    })
+
+
+    var level1SeriesTemplate = level0SeriesTemplate.clone();
+    chart.seriesTemplates.setKey("1", level1SeriesTemplate)
+    level1SeriesTemplate.fillOpacity = 0.75;
+    level1SeriesTemplate.hiddenInLegend = true;
+
+    var level2SeriesTemplate = level0SeriesTemplate.clone();
+    chart.seriesTemplates.setKey("2", level2SeriesTemplate)
+    level2SeriesTemplate.fillOpacity = 0.5;
+    level2SeriesTemplate.hiddenInLegend = true;
+
+    chart.legend = new am4charts.Legend();
+
+  });
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
