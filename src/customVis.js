@@ -65,8 +65,8 @@ element.append(visContainer)
     data.forEach(function(data) {
       formattedData.push({
 
-        name: data[grouping_dim],
-        count: data[plot_measure],
+        name: data[grouping_dim]["value"],
+        count: data[plot_measure]["value"],
 
       });
 
