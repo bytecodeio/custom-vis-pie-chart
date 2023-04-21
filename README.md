@@ -2,6 +2,7 @@ Open source Custom Vis Pie Chart using Amchart.js:
 
 https://www.amcharts.com
 
+<img width="1546" alt="Screen Shot 2023-04-21 at 9 33 31 AM" src="https://user-images.githubusercontent.com/114446653/233649103-39c21304-1b75-441d-9141-e07f58a08923.png">
 
 
 
